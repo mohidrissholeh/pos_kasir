@@ -4,7 +4,7 @@ $page_title = "Manajemen Diskon";
 
 // Cek apakah user adalah admin
 if ($_SESSION['user_role'] !== 'admin') {
-    header("Location: /pos_kasir/");
+    header("Location: /");
     exit();
 }
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
-            echo "<script>alert('Data diskon berhasil disimpan!'); window.location.href = '/pos_kasir/diskon';</script>";
+            echo "<script>alert('Data diskon berhasil disimpan!'); window.location.href = '/diskon';</script>";
         }
     } else {
         // Edit diskon
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
-            echo "<script>alert('Data diskon berhasil disimpan!'); window.location.href = '/pos_kasir/diskon';</script>";
+            echo "<script>alert('Data diskon berhasil disimpan!'); window.location.href = '/diskon';</script>";
         }
     }
 }
@@ -91,7 +91,7 @@ if (isset($_GET['delete'])) {
     $row = mysqli_fetch_assoc($result);
     
     if ($row['total'] > 0) {
-        echo "<script>alert('Diskon tidak dapat dihapus karena sudah digunakan dalam transaksi!'); window.location.href = '/pos_kasir/diskon';</script>";
+        echo "<script>alert('Diskon tidak dapat dihapus karena sudah digunakan dalam transaksi!'); window.location.href = '/diskon';</script>";
         exit();
     }
     
@@ -102,9 +102,9 @@ if (isset($_GET['delete'])) {
     // Hapus diskon
     $query = "DELETE FROM diskon WHERE id_diskon = '$id_diskon'";
     if (mysqli_query($koneksi, $query)) {
-        echo "<script>alert('Diskon berhasil dihapus!'); window.location.href = '/pos_kasir/diskon';</script>";
+        echo "<script>alert('Diskon berhasil dihapus!'); window.location.href = '/diskon';</script>";
     } else {
-        echo "<script>alert('Gagal menghapus diskon!'); window.location.href = '/pos_kasir/diskon';</script>";
+        echo "<script>alert('Gagal menghapus diskon!'); window.location.href = '/diskon';</script>";
     }
 }
 

@@ -95,9 +95,9 @@ $result = mysqli_query($koneksi, $query);
                     <div class="col-6 col-md-3 mb-3 product-item" data-kategori="<?php echo $row['id_kategori']; ?>">
                         <div class="card product-card" onclick="addToCart(<?php echo htmlspecialchars(json_encode($row)); ?>)">
                             <?php if (!empty($row['gambar'])): ?>
-                                <img src="/pos_kasir/<?php echo $row['gambar']; ?>" class="product-image" alt="<?php echo $row['nama_produk']; ?>">
+                                <img src="/<?php echo $row['gambar']; ?>" class="product-image" alt="<?php echo $row['nama_produk']; ?>">
                             <?php else: ?>
-                                <img src="/pos_kasir/dist/img/no-image.png" class="product-image" alt="No Image">
+                                <img src="/dist/img/no-image.png" class="product-image" alt="No Image">
                             <?php endif; ?>
                             <div class="product-info">
                                 <div class="product-name"><?php echo $row['nama_produk']; ?></div>
@@ -220,7 +220,7 @@ $result = mysqli_query($koneksi, $query);
                     <!-- QRIS -->
                     <div id="qrisGroup" style="display: none;">
                         <div class="text-center">
-                            <img src="/pos_kasir/assets/img/qris.png" alt="QRIS" style="max-width: 200px;">
+                            <img src="/assets/img/qris.png" alt="QRIS" style="max-width: 200px;">
                             <p class="mt-2">Scan QRIS untuk pembayaran</p>
                         </div>
                     </div>
@@ -242,11 +242,11 @@ $result = mysqli_query($koneksi, $query);
 </div>
 
 <!-- jQuery -->
-<script src="/pos_kasir/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/pos_kasir/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/pos_kasir/dist/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
 
 <script>
 let cart = [];
@@ -636,7 +636,7 @@ function completePayment() {
     $('.btn-primary').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Memproses...');
     
     $.ajax({
-        url: '/pos_kasir/ajax/process_payment.php',
+        url: '/ajax/process_payment.php',
         type: 'POST',
         data: {
             items: cart,
@@ -683,7 +683,7 @@ function completePayment() {
 
 // Fungsi untuk mencetak struk
 function printReceipt(transactionId) {
-    window.open(`/pos_kasir/print_receipt.php?id=${transactionId}`, '_blank');
+    window.open(`/print_receipt.php?id=${transactionId}`, '_blank');
 }
 
 // Pencarian produk

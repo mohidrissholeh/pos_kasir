@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php';
+require_once 'config/database.php';
 
 // Enable error reporting
 error_reporting(E_ALL);
